@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reajuste Salarial</title>
+
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.1em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        input, button {
+            width: 200px;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        p {
+            width: 400px;
+            height: 150px;
+            border: solid 1px black;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cálculo de Reajuste Salarial</h1>
+    <input type="number" id="salario" placeholder="Informe o salário" step="0.01">
+    <button onclick="calcularReajuste()">Calcular Reajuste</button>
+    <p id="resultado">Resultado</p>
+
+    <script>
+        const resultado = document.getElementById('resultado');
+
+        function calcularReajuste() {
+            let salario = Number(document.getElementById('salario').value);
+            let aumento, salarioFinal;
+
+            if (salario >= 1500.00 && salario < 1750.00) {
+                aumento = salario * 0.15; // 15%
+            } else if (salario >= 1750.00 && salario < 2000.00) {
+                aumento = salario * 0.12; // 12%
+            } else if (salario >= 2000.00 && salario < 3000.00) {
+                aumento = salario * 0.09; // 9%
+            } else if (salario >= 3000.00) {
+                aumento = salario * 0.06; // 6%
+            } else {
+                aumento = 0; // Caso o salário seja abaixo de 1500, não há aumento
+            }
+
+            salarioFinal = salario + aumento;
+
+            resultado.innerHTML = `
+                Aumento: R$ ${aumento.toFixed(2).replace('.', ',')}<br>
+                Salário Final: R$ ${salarioFinal.toFixed(2).replace('.', ',')}
+            `;
+        }
+    </script>
+</body>
+</html>

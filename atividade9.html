@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Desconto</title>
+
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.1em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        input, select, button {
+            width: 200px;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        p {
+            width: 400px;
+            height: 150px;
+            border: solid 1px black;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculadora de Desconto</h1>
+    
+    <input type="number" id="valor" placeholder="Informe o valor da peça" step="0.01">
+    
+    <select id="produto">
+        <option value="camisa">Camisa</option>
+        <option value="bermuda">Bermuda</option>
+        <option value="calca">Calça</option>
+    </select>
+    
+    <button onclick="calcularDesconto()">Calcular Desconto</button>
+    
+    <p id="resultado">Resultado</p>
+
+    <script>
+        const resultado = document.getElementById('resultado');
+
+        function calcularDesconto() {
+            let valor = Number(document.getElementById('valor').value);
+            let produto = document.getElementById('produto').value;
+            let desconto, valorFinal;
+
+            // Calcula o desconto com base no produto
+            if (produto === "camisa") {
+                desconto = valor * 0.20; // 20% de desconto para camisa
+            } else if (produto === "bermuda") {
+                desconto = valor * 0.10; // 10% de desconto para bermuda
+            } else if (produto === "calca") {
+                desconto = valor * 0.15; // 15% de desconto para calça
+            } else {
+                desconto = 0; // Caso algum produto não esteja na lista
+            }
+
+            // Calcula o valor final da venda
+            valorFinal = valor - desconto;
+
+            // Exibe o resultado
+            resultado.innerHTML = `
+                Desconto: R$ ${desconto.toFixed(2).replace('.', ',')}<br>
+                Valor Final: R$ ${valorFinal.toFixed(2).replace('.', ',')}
+            `;
+        }
+    </script>
+</body>
+</html>

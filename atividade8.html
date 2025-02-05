@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo da Média</title>
+
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.1em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        input, button {
+            width: 200px;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        p {
+            width: 400px;
+            height: 150px;
+            border: solid 1px black;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cálculo da Média</h1>
+    
+    <input type="number" id="nota1" placeholder="Informe a 1ª nota" step="0.01">
+    <input type="number" id="nota2" placeholder="Informe a 2ª nota" step="0.01">
+    <input type="number" id="nota3" placeholder="Informe a 3ª nota" step="0.01">
+    <button onclick="calcularMedia()">Calcular Média</button>
+    
+    <p id="resultado">Resultado</p>
+
+    <script>
+        const resultado = document.getElementById('resultado');
+
+        function calcularMedia() {
+            let nota1 = Number(document.getElementById('nota1').value);
+            let nota2 = Number(document.getElementById('nota2').value);
+            let nota3 = Number(document.getElementById('nota3').value);
+
+            // Calcula a média
+            let media = (nota1 + nota2 + nota3) / 3;
+            
+            // Verifica a situação do aluno
+            let situacao;
+            if (media >= 6) {
+                situacao = "Aprovado";
+            } else if (media >= 4) {
+                situacao = "Recuperação";
+            } else {
+                situacao = "Reprovado";
+            }
+
+            // Exibe o resultado
+            resultado.innerHTML = `
+                Média: ${media.toFixed(2).replace('.', ',')}<br>
+                Situação: ${situacao}
+            `;
+        }
+    </script>
+</body>
+</html>

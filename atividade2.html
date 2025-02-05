@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classificação de Triângulo</title>
+
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1em;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+        }
+
+        input, button {
+            width: 200px;
+            padding: 5px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+
+        p {
+            width: 400px;
+            height: 100px;
+            border: solid 1px black;
+            padding: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Classificação de Triângulo</h1>
+    <input type="number" id="ladoA" placeholder="Lado A" min="0">
+    <input type="number" id="ladoB" placeholder="Lado B" min="0">
+    <input type="number" id="ladoC" placeholder="Lado C" min="0">
+    <button onclick="classificarTriangulo()">Classificar Triângulo</button>
+    <p id="resultado">Resultado</p>
+</body>
+    <script>
+        const resultado = document.getElementById('resultado');
+
+        function classificarTriangulo() {
+            let a = Number(document.getElementById('ladoA').value);
+            let b = Number(document.getElementById('ladoB').value);
+            let c = Number(document.getElementById('ladoC').value);
+
+            if (a <= 0 || b <= 0 || c <= 0) {
+                resultado.innerHTML = "Os lados devem ser maiores que zero!";
+                return;
+            }
+
+            if (a === b && b === c) {
+                resultado.innerHTML = "EQUILÁTERO";
+            } else if (a === b || b === c || a === c) {
+                resultado.innerHTML = "ISÓSCELES";
+            } else {
+                resultado.innerHTML = "ESCALENO";
+            }
+        }
+
+resenha
+        if (a <= 0 || b <= 0 || c <= 0) {  // Verifica se algum lado é menor ou igual a zero
+    resultado.innerHTML = "Os lados devem ser maiores que zero!";  // Exibe mensagem de erro
+    return;  // Interrompe a execução da função para evitar cálculos inválidos
+}
+
+if (a === b && b === c) {  // Verifica se todos os lados são iguais (triângulo equilátero)
+    resultado.innerHTML = "EQUILÁTERO";  // Exibe "EQUILÁTERO" se os três lados forem iguais
+} else if (a === b || b === c || a === c) {  // Verifica se pelo menos dois lados são iguais (triângulo isósceles)
+    resultado.innerHTML = "ISÓSCELES";  // Exibe "ISÓSCELES" se dois lados forem iguais
+} else {  // Se nenhuma das condições acima for verdadeira, significa que todos os lados são diferentes
+    resultado.innerHTML = "ESCALENO";  // Exibe "ESCALENO" se todos os lados forem diferentes
+}
+resenha
+
+    </script>
+
+</html>
+
+

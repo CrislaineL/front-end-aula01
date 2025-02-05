@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> maior e menor</title>
+</head>
+<style>
+    body {
+        width: 100%;
+        display: flex;
+        font-size: 1.Sem;
+        flex-direction: column;
+        align-items: center;
+        background:  rgb(0, 0, 0);
+    }
+
+    .quadro {
+        align-self: center;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        display: flex;
+        font-size: 1.Sem;
+        flex-direction: column;
+        align-items: center;
+        background:  rgb(151, 247, 242);
+        width: 70%;
+        border: solid 6px white;
+    }
+
+    input,
+    button {
+        width: 200px;
+        padding: 15px;
+        margin: 10px;
+        border: solid 1px rgb(0, 0, 0);
+    }
+
+    p {
+        width: 400px;
+        height: 100px;
+        border: solid 3px rgb(3, 3, 3);
+        padding: 10px;
+
+    }
+</style>
+<br><br><br><br>
+<body>
+    <div class="quadro">
+        <h1>Qual o maior e o menor número?</h1>
+
+        <input type="number" id="a" step="0.01" placeholder="Primeiro número:">
+        <input type="number" id="b" step="0.01" placeholder="Segundo número:">
+        
+        <button onclick="calcularnumero()"> Mostra o maior e o menor número!</button>
+        <p id="resultado1">Resultado:</p>
+        <p id="resultado2">Resultado:</p>
+        <br><br><br>
+    </div>
+</body>
+
+<script>
+
+    const resultado = document.getElementById('resultado');
+    function calcularnumero() {
+
+        let a = Number(document.getElementById('a').value);
+        let b = Number(document.getElementById('b').value);
+        
+       let maior = Math.max(a, b);
+       
+
+       document.getElementById('resultado1').innerHTML = ` O maior número  é o: ${maior}`;
+
+       let menor = Math.min(a, b);
+
+       document.getElementById('resultado2').innerHTML = ` O menor número  é o: ${menor}`;
+
+
+    }
+</script>
+
+</html>

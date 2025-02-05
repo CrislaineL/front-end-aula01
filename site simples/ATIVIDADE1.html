@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desconto INSS</title>
+
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.1em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        input, button {
+            width: 200px;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        p {
+            width: 400px;
+            height: 150px;
+            border: solid 1px black;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cálculo de Desconto INSS</h1>
+    <input type="number" id="salario" placeholder="Informe o salário" step="0.01">
+    <button onclick="calcularDesconto()">Calcular Desconto</button>
+    <p id="resultado">Resultado</p>
+
+    <script>
+        const resultado = document.getElementById('resultado');
+
+        function calcularDesconto() {
+            let salario = Number(document.getElementById('salario').value);
+            let desconto, salarioFinal;
+
+            if (salario <= 1212.00) {
+                desconto = salario * 0.075;
+            } else if (salario <= 2427.35) {
+                desconto = salario * 0.09;
+            } else if (salario <= 3641.03) {
+                desconto = salario * 0.12;
+            } else if (salario <= 7087.22) {
+                desconto = salario * 0.14;
+            } else {
+                desconto = 7087.22 * 0.14; // Teto de desconto
+            }
+
+            salarioFinal = salario - desconto;
+            
+            resultado.innerHTML = `
+                Desconto INSS: R$ ${desconto.toFixed(2).replace('.', ',')}<br>
+                Salário Final: R$ ${salarioFinal.toFixed(2).replace('.', ',')}
+            `;
+        }
+    </script>
+</body>
+</html>
